@@ -27,8 +27,14 @@ public class AccountUser implements Runnable{
 
                     if(trasnferable){
                         System.out.println(name + ": retreved " + value + " to " +account.getIBAN());
+                        account.notify();
                     } else{
                         System.out.println(name + ": could not retreve " + value + " to " +account.getIBAN());
+                        try {
+                            account.wait(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                 } else{
@@ -38,10 +44,13 @@ public class AccountUser implements Runnable{
 
                     if(trasnferable){
                         System.out.println(name + ": transfered " + value + " to " +account.getIBAN());
+                        account.notify();
                     } else {
-                        System.out.println(name + ": could not transfered " + value + " to " +account.getIBAN());
+                        System.out.println(name + ": could not transfer " + value + " to " +account.getIBAN());
                     }
                 }
+
+                System.out.println(account.getIBAN() + " - Balance:" +account.getBalance());
             }
         }
     }
