@@ -1,4 +1,4 @@
-package euler63;
+package euler59_new.euler63;
 
 import java.util.concurrent.Callable;
 
