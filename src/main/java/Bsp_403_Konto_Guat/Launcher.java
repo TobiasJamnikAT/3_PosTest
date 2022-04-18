@@ -1,5 +1,6 @@
 package Bsp_403_Konto_Guat;
 
+import Bsp_403_Konto.User;
 import euler39_new.Triangle;
 import euler39_new.TriangleWorker;
 
