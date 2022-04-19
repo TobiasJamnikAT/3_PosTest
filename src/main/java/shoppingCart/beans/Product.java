@@ -7,10 +7,10 @@ public class Product {
     private double price;
     private int quantity;
 
-    public Product(String name, double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+    public Product(String line) {
+        String[] tokens = line.split(";€");
+        this.name = tokens[0];
+        this.price = Double.parseDouble(tokens[1]);
     }
 
     public String getName() {
@@ -23,6 +23,10 @@ public class Product {
 
     public double getPrice() {
         return price;
+    }
+
+    public double getSum(){
+        return price * quantity;
     }
 
     public void setPrice(double price) {
@@ -48,5 +52,10 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(name, price);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s costs %.2f - quantity = %d", name, price, quantity);
     }
 }
