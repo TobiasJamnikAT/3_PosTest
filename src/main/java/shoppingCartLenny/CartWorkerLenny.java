@@ -28,12 +28,14 @@ public class CartWorkerLenny implements Callable<Double> {
                     shoppingCart.addProduct(product);
                     sum += product.getPrice();
                     System.out.printf(number + " put " + product);
+                    shoppingCart.notifyAll();
                 } else {
                     boolean productInList = false;
                     while (!productInList) {
                         productInList = shoppingCart.removeProduct(product);
                     }
                     sum -= product.getPrice();
+                    //shoppingCart.notifyAll(); kein notify bei remove
                 }
             }
 
